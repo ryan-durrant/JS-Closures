@@ -15,10 +15,12 @@ closure over the name variable. Invoke outer saving the return value into
 another variable called 'inner'. */
 
 // Code Here
+var inner = outer();
 
 //Once you do that, invoke inner.
 
 //Code Here
+inner();
 
 
 
@@ -49,7 +51,8 @@ in your console. */
 
   //Code Here
 
-
+var makeCall = callFriend();
+makeCall("435-215-9248");
 
 
 
@@ -67,7 +70,9 @@ in your console. */
 properly. */
 
 //Code Here
-
+function makeCounter(){
+  
+}
 //Uncomment this once you make your function
 //   var count = makeCounter();
 //   count(); // 1
