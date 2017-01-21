@@ -71,14 +71,17 @@ properly. */
 
 //Code Here
 function makeCounter(){
-  
+  var num = 0;
+  return function(){
+    return num += 1;
+  }
 }
 //Uncomment this once you make your function
-//   var count = makeCounter();
-//   count(); // 1
-//   count(); // 2
-//   count(); // 3
-//   count(); // 4
+  var count = makeCounter();
+  count(); // 1
+  count(); // 2
+  count(); // 3
+  count(); // 4
 
 
 
@@ -101,11 +104,15 @@ function is responsible for decrementing the value by one. You will need to use
 the module pattern to achieve this. */
 
 function counterFactory(value) {
-
+var valuePassed = value;
   // Code here.
-
-
   return {
+    inc: function inc(){
+      return valuePassed += 1;
+    },
+    dec: function dec(){
+      return valuePassed -= 1;
+    }
   }
 }
 
@@ -134,10 +141,13 @@ function motivation(firstname, lastname){
   var welcomeText = 'You\'re doing awesome, keep it up ';
 
   // code message function here.
+  function message(){
+    return welcomeText + firstname + ' ' + lastname + '.';
+  };
 
 
   //Uncommment this to return the value of your invoked message function
-  //return message();
+  return message();
 
 }
 
@@ -177,12 +187,15 @@ var module = (function() {
 
   return {
     // Code here.
+    publicMethod: function(){
+      return privateMethod();
+    }
   };
 
 })();
 
 // Uncomment this after you create your public method
-//   module.publicMethod();
+  module.publicMethod();
 
 
 
@@ -205,18 +218,15 @@ then 3, etc). Run this code in your console to see what the output is. */
 // To make this code work you will need to create a new scope for every iteration.
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
-    setTimeout(function() {
-      console.log(i);
-    }, i * 1000)
+    setTimeout(newScope, i * 1000, i)
   }
 
   function newScope(i) {
-    console.log(i)
-  }
+    console.log(i);
+  };
+  // console.log(newScope);
 }
 timeOutCounter();
-
-
 
 
 
@@ -225,7 +235,26 @@ timeOutCounter();
 	#PROBLEM-08
 \******************************************************************************/
 
-var funcArray = [];
+var funcArray = [
+  function(){
+    return 0;
+  },
+  function(){
+    return 1;
+  },
+  function(){
+    return 2;
+  },
+  function(){
+    return 3;
+  },
+  function(){
+    return 4;
+  },
+  function(){
+    return 5;
+  }
+];
 
 /*
   Make the following code work
